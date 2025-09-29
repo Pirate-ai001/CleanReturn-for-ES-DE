@@ -147,9 +147,7 @@ I built this project to make ES-DE integration easier for everyone, these things
 
 I would really appreciate a cup of coffee if this helped you out. ☕
 
-- [Buy Me a Coffee](https://buymeacoffee.com/yourname)
-- [GitHub Sponsors](https://github.com/sponsors/yourname)
-
+- Buy Me a Coffee: https://buymeacoffee.com/pirateai001
 ---
 
 ## 🔗 More Projects
@@ -167,4 +165,5 @@ You are free to use, share, and modify this project for **personal use**.
 If you are interested in commercial use or integration into a paid product, please contact me.
 
 👉 See the [LICENSE](./LICENSE) file or the full text at
+
 [https://www.gnu.org/licenses/gpl-3.0.txt](https://www.gnu.org/licenses/gpl-3.0.txt).
