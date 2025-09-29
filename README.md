@@ -145,10 +145,9 @@ ES-DE is cross-platform, but Linux/Proton support is a future goal.
 
 I built this project to make ES-DE integration easier for everyone, these things take time & effort.
 
-I would really appreciate a cup of coffee if this helped you out. ☕
+I would really appreciate a cup of coffee if this helped you out. ☕:)
 
-- [Buy Me a Coffee](https://buymeacoffee.com/yourname)
-- [GitHub Sponsors](https://github.com/sponsors/yourname)
+- Buy Me a Coffee: https://buymeacoffee.com/pirateai001
 
 ---
 
