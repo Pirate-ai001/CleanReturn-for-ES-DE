@@ -155,7 +155,7 @@ I would really appreciate a cup of coffee if this helped you out. ☕
 ## 🔗 More Projects
 
 I plan to release more tools like this.
-Check my [GitHub profile](https://github.com/yourname) to see other projects I’m working on!
+Check & Bookmark my [GitHub profile](https://github.com/yourname) to see other projects I’m working on as they become available!
 
 ---
 
