@@ -6,6 +6,12 @@ Seamless, controller-only PC game launching in EmulationStation Desktop Edition 
 ✅ Launchers close automatically when you exit
 ✅ Instant return to ES-DE
 ##
+
+## 🎥 Demo
+
+https://github.com/user-attachments/assets/a3280b20-7ce9-438b-8f8a-18e29662c918
+
+---
                                                 5 Step Quick Start guide 
 
 ## 1. Copy Files
@@ -130,7 +136,7 @@ ES-DE is cross-platform, but Linux/Proton support is a future goal.
 
 ## 🚀 Roadmap
 
-- Additional launcher support (GOG, Ubisoft Connect, Xbox PC Game Pass).
+- Additional launcher support (GOG, Ubisoft Connect, Xbox PC Game Pass, EA ect).
 
 - Unified per-game config (no editing .bat files).
 
