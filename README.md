@@ -6,7 +6,7 @@ Seamless, controller-only PC game launching in EmulationStation Desktop Edition 
 ✅ Launchers close automatically when you exit
 ✅ Instant return to ES-DE
 ##
-                            5 Step Quick Start guide 
+                                                5 Step Quick Start guide 
 
 ## 1. Copy Files
 Place the entire CleanReturn folder into your ES-DE scripts directory.
