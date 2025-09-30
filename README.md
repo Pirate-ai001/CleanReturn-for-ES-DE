@@ -1,4 +1,4 @@
-  ## 🎮 CleanReturn for ES-DE 🎮
+  ## 🎮 CleanReturn for ES-DE
 
 Seamless, controller-only PC game launching in EmulationStation Desktop Edition for Windows (ES-DE).
 
