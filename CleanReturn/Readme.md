@@ -1,6 +1,6 @@
    ## 🎮 CleanReturn for ES-DE 
 
-Seamless, controller-only PC game launching in EmulationStation Desktop Edition (ES-DE).
+Seamless, controller-only PC game launching in EmulationStation Desktop Edition for Windows (ES-DE).
 
 ✅ No Alt+Tabbing
 ✅ Launchers close automatically when you exit
@@ -173,3 +173,4 @@ If you are interested in commercial use or integration into a paid product, plea
 
 👉 See the [LICENSE](./LICENSE) file or the full text at
 [https://www.gnu.org/licenses/gpl-3.0.txt](https://www.gnu.org/licenses/gpl-3.0.txt).
+
