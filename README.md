@@ -134,6 +134,10 @@ CleanReturn/
 ES-DE is cross-platform, but Linux/Proton support is a future goal.
 ##
 
+## 🔄 Recent Updates
+- **2025-10-01**: Fixed Non-Steam Template to automatically set working directory (important for games like Tony Hawk’s reTHAWed).
+  - If you downloaded an earlier version, please replace your `Non Steam Game (Template).bat` with the latest one from `/Templates`.
+
 ## 🚀 Roadmap
 
 - Additional launcher support (GOG, Ubisoft Connect, Xbox PC Game Pass, EA ect).
