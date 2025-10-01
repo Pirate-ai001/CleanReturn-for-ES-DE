@@ -86,6 +86,11 @@ Non-Steam:
 
 ##
 
+## 🔄 Recent Updates - Changelog
+- **2025-10-01**: Fixed Non-Steam Template to automatically set working directory (important for many games like Tony Hawk’s reTHAWed).
+  - If you downloaded an earlier version, please replace your `Non Steam Game (Template).bat` with the latest one from `/Templates`.
+
+
 ## ⚠️ Troubleshooting
 
 Launcher not closing
