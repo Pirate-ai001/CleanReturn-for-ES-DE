@@ -42,6 +42,8 @@ Each template includes placeholders you must fill in:
 | `LauncherProcessName` | `steam`, `EpicGamesLauncher`, *blank*       | Optional, depends on launcher                 |
 | `GAME_PATH`           | `C:\Games\Blur\Blur.exe`                    | Required for Non-Steam only                   |
 
+👉 For a detailed step-by-step walkthrough with examples, see [Adding-New-Games.md](Adding-New-Games.md)
+
 ## 5. Launch via ES-DE
 
 Place the .bat files in your ES-DE Windows ROMs folder (e.g. G:\ES-DE\Roms\windows) and launch them directly from ES-DE.
@@ -82,35 +84,28 @@ Scripts won’t run
 
 ##
 ## 📝 Changelog
-v1.0.0 — First Release
+### v1.0.0 — First Release
 
-- Added validation to all templates (Steam, Steam Exception, Epic, Non-Steam).
-
-- Clear error messages for missing AppId, GameProcessName, or GAME_PATH.
-
-- Game won’t launch until setup is correct (avoids confusion).
-
-- Added ✅ “Validation passed. Launching game…” success message.
-
+- Core cleanup script (`CleanReturn.ps1`).
+- Config system (`CleanReturn.config`):
+  - Copy `CleanReturn.config.example` → rename to `CleanReturn.config`.
+  - Place in Scripts folder with `CleanReturn.ps1`.
+- Four ready-to-use templates:
+  - Steam Game (Template).bat
+  - Steam Game Exception (Template).bat
+  - Epic Games Store (Template).bat
+  - Non-Steam Game (Template).bat
+- **Validation system**:
+  - Prevents launching if `AppId`, `GameProcessName`, or `GAME_PATH` are missing.
+  - Clear error messages with step-by-step fix instructions.
+  - ✅ Success message *“Validation passed. Launching game…”* when setup is correct.
+- Unified template structure (Validation → Launch → Cleanup).
 - Improved error display formatting for clarity.
+- Documentation updated:
+  - `README.md` (quick start + validation info)
+  - `TechnicalNotes.md` (detailed breakdown)
+  - `Adding-New-Games.md` (step-by-step guide)
 
-- Config system:
-
-- Copy CleanReturn.config.example into the Scripts folder.
-
-- Rename to CleanReturn.config and edit paths once for your setup.
-
-- Templates polished and consistent:
-
-- Steam Game (Template)
-
-- Steam Game Exception (Template)
-
-- Epic Games Store (Template)
-
-- Non-Steam Game (Template)
-
-- README and TechnicalNotes updated for consistency and troubleshooting.
 ##
 
 ## ❤️ Support This Project

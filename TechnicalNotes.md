@@ -12,6 +12,7 @@ CleanReturn/
 ├─ CleanReturn.config.example   # Example config (copy & rename to .config)
 ├─ README.md                    # Quick start guide
 ├─ TechnicalNotes.md            # Detailed breakdown
+├─ Adding-New-Games.md          # Step-by-step user guide (new)
 ├─ LICENSE                      # GPLv3 license
 └─ Templates/                   # Ready-to-use per-store templates
    ├─ Epic Games Store (Template).bat
