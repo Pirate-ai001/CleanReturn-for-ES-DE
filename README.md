@@ -4,6 +4,7 @@
 It ensures a seamless controller-only loop: **ES-DE → Game → ES-DE** — no lingering launchers or Alt+Tab required.
 
 ---
+https://github.com/user-attachments/assets/7076c122-2333-4922-b05d-cacaf31cba49
 
 ## 🚀 Quick Start
 
@@ -148,27 +149,20 @@ Scripts won’t run
 
 ##
 ## 📝 Changelog
-### v1.0.0 — First Release
 
-- Core cleanup script (`CleanReturn.ps1`).
-- Config system (`CleanReturn.config`):
-  - Copy `CleanReturn.config.example` → rename to `CleanReturn.config`.
-  - Place in Scripts folder with `CleanReturn.ps1`.
-- Four ready-to-use templates:
-  - Steam Game (Template).bat
-  - Steam Game Exception (Template).bat
-  - Epic Games Store (Template).bat
-  - Non-Steam Game (Template).bat
-- **Validation system**:
-  - Prevents launching if `AppId`, `GameProcessName`, or `GAME_PATH` are missing.
-  - Clear error messages with step-by-step fix instructions.
-  - ✅ Success message *“Validation passed. Launching game…”* when setup is correct.
-- Unified template structure (Validation → Launch → Cleanup).
-- Improved error display formatting for clarity.
-- Documentation updated:
-  - `README.md` (quick start + validation info)
-  - `TechnicalNotes.md` (detailed breakdown)
-  - `Adding-New-Games.md` (step-by-step guide)
+### v1.0.0–v1.0.1 — Initial release & polish
+
+- **Core:** `CleanReturn.ps1` — monitoring & cleanup script.
+- **Config:** Added `CleanReturn.config.example`; users should copy → rename to `CleanReturn.config` and place it alongside `CleanReturn.ps1`. The repository no longer contains a personal config file and `CleanReturn.config` is ignored via `.gitignore`.
+- **Finalized templates:** four ready-to-use templates:
+  - `Steam Game (Template).bat`
+  - `Steam Game Exception (Template).bat`
+  - `Epic Games Store (Template).bat`
+  - `Non-Steam Game (Template).bat`
+- **Validation system:** templates now check `AppId`, `GameProcessName`, and `GAME_PATH` (where applicable) before launching. Misconfiguration blocks the launch and shows a clear, step-by-step error. When valid, templates print **“Validation passed. Launching game…”**.
+- **Unified template flow:** all templates follow the same structure — **Validation → Launch → Cleanup**.
+- **Usability & clarity:** improved error formatting and user-facing messages to reduce confusion.
+- **Documentation updated:** `README.md`, `TechnicalNotes.md`, and `Adding-New-Games.md` (step-by-step guide) refreshed to match the new templates and workflow.
 
 ##
 
