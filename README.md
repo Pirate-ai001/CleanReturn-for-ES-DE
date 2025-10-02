@@ -24,13 +24,76 @@ STEAM_EXE_PATH=C:\Program Files (x86)\Steam\steam.exe
 [EPIC]
 EPIC_SHORTCUTS_PATH=G:\ES-DE\Roms\Windows\Epic Shortcuts
 ```
+⚠️ Important: CleanReturn.config must be placed in:
+
+
+* ES-DE\Scripts\CleanReturn\CleanReturn.config
+
+If the file is missing or in the wrong place, templates will fail with a clear error message:
+  
+Do not keep the config inside other folders (e.g. `CleanReturn-for-ES-DE`). Only the `CleanReturn` folder should live inside `Scripts`.  
 
 ## 3. Pick a Template
 
-- **Steam Game (Template).bat** → For most Steam games  
-- **Steam Game Exception (Template).bat** → If detection fails, requires `GameProcessName`  
-- **Epic Games Store (Template).bat** → Launches `.url` shortcuts, requires `GameProcessName`  
-- **Non-Steam Game (Template).bat** → Standalone `.exe`, requires `GAME_PATH` + `GameProcessName`
+**Steam Game Template**
+
+* Works for most Steam games.  
+* Launches the game directly through Steam using its `AppId`.  
+* CleanReturn monitors the running game process automatically — you don’t need to set `GameProcessName` unless detection fails.  
+* After the game exits, if Steam was launched by ES-DE, it is closed automatically.  
+
+Setup:  
+1. Copy **Steam Game (Template).bat** from `/Templates` into your ES-DE `Roms\windows` folder.  
+2. Rename it (e.g. `Blur.bat`).  
+3. Edit the file and set the correct `AppId` (find this on the game’s SteamDB page or in Steam’s launch options).  
+
+---
+
+**Steam Game Exception Template**
+
+* Use this when CleanReturn cannot automatically detect the game process (rare, but happens with some titles).  
+* Works the same way as the default Steam template, but requires you to manually set `GameProcessName`.  
+* `GameProcessName` must match the process name shown in Task Manager (no `.exe` extension needed).  
+
+Setup:  
+1. Copy **Steam Game Exception (Template).bat** from `/Templates` into your ES-DE `Roms\windows` folder.  
+2. Rename it (e.g. `Bomb Rush Cyberfunk.bat`).  
+3. Edit the file:  
+   - Set `AppId` (Steam game ID).  
+   - Set `GameProcessName` (from Task Manager → Details tab).  
+
+---  
+# 
+
+**Non-Steam Game Template**
+
+* Launches a standalone `.exe` game with no launcher involved.  
+* Requires both `GAME_PATH` (full path to the game’s executable) and `GameProcessName` (so CleanReturn can monitor and detect when the game closes).  
+* No launcher cleanup is performed, since the game runs directly.  
+
+Setup:  
+1. Copy **Non-Steam Game (Template).bat** from `/Templates` into your ES-DE `Roms\windows` folder.  
+2. Rename it (e.g. `Tony Hawk's American Wasteland.bat`).  
+3. Edit the file and set:  
+   - `AppId` (give it a unique identifier, e.g. `NONSTEAM_THAW`).  
+   - `GAME_PATH` (full path to the game’s `.exe`, e.g. `G:\PC Games\THAW\Game\reTHAWed.exe`).  
+   - `GameProcessName` (the process name from Task Manager, e.g. `reTHAWed.exe`).  
+4. Launch from ES-DE — CleanReturn will start the game, monitor the process, and return you cleanly back to ES-DE after exit.  
+
+# 
+- **Epic Games Store (Template).bat** → Launches `.url` shortcuts, requires `GameProcessName`
+
+ℹ️ **Epic Games setup note**  
+Epic does not allow games to be launched directly by .exe.  
+Instead, you must create a shortcut for each game from the Epic Launcher:  
+- In Epic, right-click the game → Manage → Create Desktop Shortcut.  
+- Move the shortcut (.url file) into the folder you set as `EPIC_SHORTCUTS_PATH` in CleanReturn.config.  
+  - Example: if your config has `EPIC_SHORTCUTS_PATH=G:\ES-DE\Roms\Windows\Epic Shortcuts`  
+    then place the shortcut (e.g. `Control.url`) into that folder.  
+- Copy the **Epic Games Store (Template).bat** from `/Templates` into your ES-DE `Roms\windows` folder.  
+- Rename it (e.g. `Control.bat`) and edit the `AppId` and `GameProcessName` values inside.  
+## 
+
 
 ## 4. Edit Per-Game Values
 

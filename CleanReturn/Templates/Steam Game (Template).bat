@@ -1,42 +1,54 @@
 @echo off
 :: ==================================================
-:: CleanReturn - Steam Default Template (v1.1 optimized)
+:: CleanReturn - Steam Game (Template)
 :: ==================================================
 
-:: 1. Load global config values
-for /f "tokens=1,2 delims==" %%a in ('findstr "=" "G:\ES-DE\Scripts\CleanReturn\CleanReturn.config"') do (
+:: Locate and load global config
+set "CONFIG_PATH=%~dp0..\..\Scripts\CleanReturn\CleanReturn.config"
+
+if not exist "%CONFIG_PATH%" (
+    echo.
+    echo ⚠️ ERROR: CleanReturn.config not found.
+    echo Expected here: %CONFIG_PATH%
+    echo.
+    echo Make sure you copied CleanReturn.config.example to:
+    echo   ES-DE\Scripts\CleanReturn\CleanReturn.config
+    echo.
+    pause
+    exit /b 1
+)
+
+for /f "tokens=1,2 delims==" %%a in ('findstr "=" "%CONFIG_PATH%"') do (
     set %%a=%%b
 )
 
-:: 2. Game-specific values
-set AppId=123456
+:: Game-specific values
+set AppId=
+set GameProcessName=
 set LauncherProcessName=steam
 set FlagFile="%SCRIPTS_PATH%\KILL_STEAM_FLAG.tmp"
 
 :: ==================================================
-:: 3. Validation
+:: Validation
 :: ==================================================
 powershell -ExecutionPolicy Bypass -Command ^
-    "$ErrorActionPreference='SilentlyContinue';" ^
-    "if (-not '%AppId%') { Write-Host '============================='; Write-Host '⚠️ CLEANRETURN CONFIG ERROR ⚠️'; Write-Host '============================='; Write-Host ''; Write-Host '❌ AppId is missing.'; Write-Host ''; Write-Host '🔧 How to fix:'; Write-Host '   1. Edit this .bat file'; Write-Host '   2. Set AppId to your Steam App ID (from the store URL)'; Write-Host '   3. Save and try again'; exit 1 }"
+    "if (-not '%AppId%') { Write-Host '❌ ERROR: AppId missing'; exit 1 }"
 
 if errorlevel 1 (
     pause
     exit /b 1
 )
 
-echo ✅ Validation passed. Launching game...
-
 :: ==================================================
-:: 4. Launch Game
+:: Launch Game
 :: ==================================================
 start "" "%STEAM_EXE_PATH%" -applaunch %AppId%
 
 :: ==================================================
-:: 5. Cleanup / Monitoring
+:: Cleanup
 :: ==================================================
 powershell -ExecutionPolicy Bypass -File "%SCRIPTS_PATH%\CleanReturn.ps1" ^
 -AppId "%AppId%" -LauncherProcessName "%LauncherProcessName%" ^
--FlagFile %FlagFile%
+-FlagFile %FlagFile% -GameProcessName "%GameProcessName%"
 
 exit

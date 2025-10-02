@@ -47,6 +47,16 @@ Edit this file once for your system.
 *Only game-specific values remain inside each .bat.
 
 
+⚠️ Warning!! Config Location
+
+The `CleanReturn.config` file must be placed in:
+
+ES-DE\Scripts\CleanReturn\CleanReturn.config
+
+Templates are hardcoded to look for it there. If it’s missing or located elsewhere, the scripts will stop with a clear error message.  
+
+
+
 ## 2. Placeholders (Per-Game Values)
 
 Each template still requires per-game info:
@@ -61,13 +71,13 @@ Each template still requires per-game info:
 
 All templates now validate required values before launching.
 
-If something is missing or invalid:
+**If something is missing or invalid:**
 
 ❌ Game does not launch.
 
 A clear error message appears with instructions.
 
-If everything is correct:
+**If everything is correct:**
 
 ✅ Displays “Validation passed. Launching game…”
 
@@ -77,43 +87,68 @@ This prevents silent failures and ensures smoother setup.
 
 ## 4. Template Breakdowns
 
-Epic Games Store (Template)
 
-*Launches game via .url shortcut in %EPIC_SHORTCUTS_PATH%.
+### Steam Game (Template)
 
-*Validates AppId, GameProcessName, and shortcut existence.
+* Works for most Steam games.  
+* Launches the game directly through Steam using its `AppId`.  
+* CleanReturn monitors the running game process automatically — `GameProcessName` is not required unless detection fails.  
+* Uses `KILL_STEAM_FLAG.tmp` so Steam is only closed if it was launched by ES-DE.  
 
-*Cleans up EpicGamesLauncher.exe
-
----
----
-Steam Game (Template)
-
-
-*Recommended for most Steam games.
-
-*Requires only AppId.
-
-*Creates/uses KILL_STEAM_FLAG.tmp to decide whether Steam is closed after exit.
+**Setup**  
+1. Copy **Steam Game (Template).bat** from `/Templates` into your ES-DE `Roms\windows` folder.  
+2. Rename it to the game’s name (e.g. `Blur.bat`).  
+3. Edit the file and set the correct `AppId` (Steam game ID).  
 
 ---
+
+### Steam Game Exception (Template)
+
+* Use if automatic detection fails (some games use unusual executables).  
+* Requires both `AppId` and `GameProcessName`.  
+* Same Steam flag file system as the default template.  
+
+**Setup**  
+1. Copy **Steam Game Exception (Template).bat** into `Roms\windows`.  
+2. Rename it (e.g. `Bomb Rush Cyberfunk.bat`).  
+3. Edit the file:  
+   - Set `AppId` (Steam game ID).  
+   - Set `GameProcessName` (process name from Task Manager → Details tab).  
+
 ---
 
-Steam Game Exception (Template)
+### Epic Games Store (Template)
 
-*Use if detection fails.
+* Epic does not allow direct `.exe` launching — games must be launched via `.url` shortcuts.  
+* Each game must have a shortcut created in Epic Launcher:  
+  - Right-click the game → Manage → Create Desktop Shortcut.  
+  - Move the shortcut into the folder you set as `EPIC_SHORTCUTS_PATH` in `CleanReturn.config`.  
+    - Example: if config has `EPIC_SHORTCUTS_PATH=G:\ES-DE\Roms\Windows\Epic Shortcuts`, then place `Control.url` there.  
+* CleanReturn then launches `%EPIC_SHORTCUTS_PATH%\GameName.url`, monitors `GameProcessName`, and closes EpicGamesLauncher after exit.  
 
-*Requires both AppId and GameProcessName.
+**Setup**  
+1. Copy **Epic Games Store (Template).bat** into `Roms\windows`.  
+2. Rename it (e.g. `Control.bat`).  
+3. Edit the file and set:  
+   - `AppId` (unique ID, e.g. `EPIC_CONTROL`).  
+   - `GameProcessName` (from Task Manager → Details tab).  
 
-*Same Steam flag system as default template.
 ---
----
 
-Non-Steam Game (Template)
+### Non-Steam Game (Template)
 
-*Launches standalone .exe.
+* Launches a standalone `.exe` directly (no launcher).  
+* Requires both `GAME_PATH` and `GameProcessName`.  
+* No launcher cleanup is performed — CleanReturn just monitors the process and returns to ES-DE.  
 
-*Requires GAME_PATH, AppId, and GameProcessName.
+**Setup**  
+1. Copy **Non-Steam Game (Template).bat** into `Roms\windows`.  
+2. Rename it (e.g. `Tony Hawk's American Wasteland.bat`).  
+3. Edit the file and set:  
+   - `AppId` (unique ID, e.g. `NONSTEAM_THAW`).  
+   - `GAME_PATH` (full path to the game’s `.exe`).  
+   - `GameProcessName` (process name from Task Manager).  
+
 #
 ## 5. Flow of Execution
 
