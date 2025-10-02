@@ -1,151 +1,117 @@
-   ## 🎮 CleanReturn for ES-DE 
+# 🎮 CleanReturn
 
-Seamless, controller-only PC game launching in EmulationStation Desktop Edition for Windows (ES-DE).
-
-✅ No Alt+Tabbing
-✅ Launchers close automatically when you exit
-✅ Instant return to ES-DE
-##
-
-## 🎥 Demo
-
-https://github.com/user-attachments/assets/a3280b20-7ce9-438b-8f8a-18e29662c918
+**CleanReturn** is a lightweight script system for managing Steam, Epic Games Store, and Non-Steam games in [ES-DE (EmulationStation Desktop Edition)](https://es-de.org/).  
+It ensures a seamless controller-only loop: **ES-DE → Game → ES-DE** — no lingering launchers or Alt+Tab required.
 
 ---
-                            5 Step Quick Start guide 
 
-## 1. Copy Files
-Place the entire CleanReturn folder into your ES-DE scripts directory.
+## 🚀 Quick Start
 
+### 1. Download / Clone
+Clone this repository or download the latest release from the [Releases](https://github.com/your-repo/releases) page.
 
-## 2. Create Config (once)
-Rename `/Templates/CleanReturn.config.example` to `/Templates/CleanReturn.config`,  
-   then edit it with your system paths::
+### 2. Create Config
+Copy `CleanReturn.config.example` into the **Scripts folder** (where `CleanReturn.ps1` is located).  
+Rename it to `CleanReturn.config` and edit the paths for your system:
 
-- [SCRIPTS]
+```ini
+[SCRIPTS]
 SCRIPTS_PATH=G:\ES-DE\Scripts\CleanReturn
 
-- [STEAM]
+[STEAM]
 STEAM_EXE_PATH=C:\Program Files (x86)\Steam\steam.exe
 
-- [EPIC]
+[EPIC]
 EPIC_SHORTCUTS_PATH=G:\ES-DE\Roms\Windows\Epic Shortcuts
-
-##
+```
 
 ## 3. Pick a Template
-Copy one of the ready-to-use templates in /Templates and rename it for your game:
 
-- Epic Games Store (Template).bat
-
-- Steam Game (Default Template).bat
-
-- Steam Game Exception (Template).bat
-
-- Non Steam Game (Template).bat
-
-
-##
-
+- **Steam Game (Template).bat** → For most Steam games  
+- **Steam Game Exception (Template).bat** → If detection fails, requires `GameProcessName`  
+- **Epic Games Store (Template).bat** → Launches `.url` shortcuts, requires `GameProcessName`  
+- **Non-Steam Game (Template).bat** → Standalone `.exe`, requires `GAME_PATH` + `GameProcessName`
 
 ## 4. Edit Per-Game Values
-Inside your copied .bat file, update only:
 
-- AppId → Steam ID, Epic shortcut name, or label (Non-Steam).
+Each template includes placeholders you must fill in:
+| Variable              | Example Value                               | Required For                                  |
+| --------------------- | ------------------------------------------- | --------------------------------------------- |
+| `AppId`               | `1353230`, `EPIC_CONTROL`, `NONSTEAM_MYEXE` | All templates (Steam, Epic, Non-Steam)        |
+| `GameProcessName`     | `Control_DX12.exe`                          | Required for Epic, Non-Steam, Steam Exception |
+| `LauncherProcessName` | `steam`, `EpicGamesLauncher`, *blank*       | Optional, depends on launcher                 |
+| `GAME_PATH`           | `C:\Games\Blur\Blur.exe`                    | Required for Non-Steam only                   |
 
-- GameProcessName → exact process name (no .exe).
+## 5. Launch via ES-DE
 
-- start "" "<path-to-game.exe>" → for Non-Steam only.
+Place the .bat files in your ES-DE Windows ROMs folder (e.g. G:\ES-DE\Roms\windows) and launch them directly from ES-DE.
 
+## 🔧 Validation System (v1.0+)
+
+Before launching, templates validate required values.
+
+If something is missing or incorrect:
+
+❌ The game will not launch
+
+A clear error message will appear with step-by-step fix instructions
+##
+If everything is correct:
+
+✅ You’ll see “Validation passed. Launching game…”
+
+The game launches normally
+
+This prevents silent failures and makes setup easier for new users.
 ##
 
-## 5. Add to ES-DE
-Add your .bat as if it were a ROM. That’s it 🎉
-##
+## 🛠️ Troubleshooting
 
-## 🛠 Storefront Notes
+FINDSTR: Cannot open CleanReturn.config
+→ You forgot to copy CleanReturn.config.example to CleanReturn.config.
 
-Epic Games:
+Game doesn’t close properly
+→ Check that GameProcessName matches Task Manager’s process name exactly.
 
-- Disable Cloud Saves to avoid sync popups.
+Launcher stays open
+→ Ensure the flag file path in your template matches CleanReturn.config.
 
-- Move the game’s .url shortcut into %EPIC_SHORTCUTS_PATH%.
-
-Steam:
-
-- Use the game’s App ID (from its store URL).
-
-## ***If Steam doesn’t close, use the “Exception” template and set GameProcessName*.
-
-
-Non-Steam:
-
-- Point directly to the game .exe.
-
-- No launcher cleanup needed.
+Scripts won’t run
+→ Run PowerShell as Admin and set execution policy:
+```Set-ExecutionPolicy RemoteSigned```
 
 ##
+## 📝 Changelog
+v1.0.0 — First Release
 
-## ⚠️ Troubleshooting
+- Added validation to all templates (Steam, Steam Exception, Epic, Non-Steam).
 
-Launcher not closing
-- Check GameProcessName matches Task Manager (Details tab).
+- Clear error messages for missing AppId, GameProcessName, or GAME_PATH.
 
-Game not closing 
-- Verify the path to CleanReturn.ps1 in your config.
+- Game won’t launch until setup is correct (avoids confusion).
 
-Script won’t run 
-- Run PowerShell as Administrator once:
+- Added ✅ “Validation passed. Launching game…” success message.
 
-- Set-ExecutionPolicy RemoteSigned
+- Improved error display formatting for clarity.
 
+- Config system:
 
+- Copy CleanReturn.config.example into the Scripts folder.
+
+- Rename to CleanReturn.config and edit paths once for your setup.
+
+- Templates polished and consistent:
+
+- Steam Game (Template)
+
+- Steam Game Exception (Template)
+
+- Epic Games Store (Template)
+
+- Non-Steam Game (Template)
+
+- README and TechnicalNotes updated for consistency and troubleshooting.
 ##
-## 🔒 Security
-
-Batch files use:
-
-powershell -ExecutionPolicy Bypass -File "CleanReturn.ps1"
-
-- This only runs the local, trusted CleanReturn.ps1.
-
-- No internet code is executed.
-
-## (For advanced users: see TechnicalNotes.md for optional self-signing & stricter execution policies.)
-
-##
-## 📂 Repository Layout
-CleanReturn/
-├─ CleanReturn.ps1              # Core monitoring & cleanup script
-├─ README.md                    # Quick start guide
-├─ TechnicalNotes.md            # Deep dive (advanced users)
-├─ LICENSE                      # GPLv3 license
-└─ Templates/                   # Ready-to-use .bat templates
-   ├─ CleanReturn.config
-   ├─ Epic Games Store (Template).bat
-   ├─ Steam Game (Default Template).bat
-   ├─ Steam Game Exception (Template).bat
-   └─ Non Steam Game (Template).bat
-##
-## 🌍 Notes
-
-🖥 Windows only (PowerShell + Batch).
-
-ES-DE is cross-platform, but Linux/Proton support is a future goal.
-##
-
-## 🚀 Roadmap
-
-- Additional launcher support (GOG, Ubisoft Connect, Xbox PC Game Pass, EA etc).
-
-- Unified per-game config (no editing .bat files).
-
-- Logging system (track launches & exits).
-
-- Cross-platform investigation (Linux + Proton/Wine).
-##
-
-
 
 ## ❤️ Support This Project
 
@@ -173,4 +139,6 @@ If you are interested in commercial use or integration into a paid product, plea
 
 👉 See the [LICENSE](./LICENSE) file or the full text at
 [https://www.gnu.org/licenses/gpl-3.0.txt](https://www.gnu.org/licenses/gpl-3.0.txt).
+---
+
 
