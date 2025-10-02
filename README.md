@@ -24,14 +24,15 @@ STEAM_EXE_PATH=C:\Program Files (x86)\Steam\steam.exe
 [EPIC]
 EPIC_SHORTCUTS_PATH=G:\ES-DE\Roms\Windows\Epic Shortcuts
 ```
-⚠️ Important: CleanReturn.config must be placed in:
 
-
-* ES-DE\Scripts\CleanReturn\CleanReturn.config
-
-If the file is missing or in the wrong place, templates will fail with a clear error message:
+### ⚠️ Important: CleanReturn.config must be placed in:
+* ES-DE\Scripts\CleanReturn\CleanReturn.config 
+  If the file is missing or in the wrong place, templates will fail with a clear error message:
   
-Do not keep the config inside other folders (e.g. `CleanReturn-for-ES-DE`). Only the `CleanReturn` folder should live inside `Scripts`.  
+> **⚠️ CRITICAL ERROR: CleanReturn.config not found.**
+> Please ensure the config is copied and correctly named in the Scripts folder.
+
+- The new templates are designed to be robust, but the config must be named `CleanReturn.config` and be present in the main **Scripts folder** next to `CleanReturn.ps1`.
 
 ## 3. Pick a Template
 

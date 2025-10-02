@@ -25,8 +25,10 @@ CleanReturn/
 ## 1. Config System
 
 ### Location
-- `CleanReturn.config` must be in the **Scripts folder** (same location as `CleanReturn.ps1`).  
-- Copy it from `CleanReturn.config.example`, rename, and edit paths once.  
+- **Portable Logic:** `CleanReturn.config` is primarily looked for in the folder two directories up from the game's launcher script, specifically: **`[ES-DE Root]\Scripts\CleanReturn\CleanReturn.config`**. This ensures the scripts work regardless of which sub-folder the game `.bat` file is in.
+- **Developer Fallback:** The templates include a secondary check that allows the developer (you) to run the scripts from a separate, hardcoded location during development. This is automatically ignored by end-users.
+
+- Copy it from `CleanReturn.config.example`, rename, and edit paths once.
 
 ### Example
 ```ini
