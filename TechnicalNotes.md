@@ -7,17 +7,17 @@ Most users won’t need this — the README.md Quick Start is enough.
 
 ## 📂 Repository Layout
 
-CleanReturn/  
-├─ CleanReturn.ps1              # Core monitoring & cleanup script  
-├─ README.md                    # Quick start guide  
-├─ TechnicalNotes.md            # This file (detailed breakdown)  
-├─ LICENSE                      # License (GPLv3)  
-└─ Templates/                   # Ready-to-use per-store templates  
-   ├─ CleanReturn.config.example # Example config file (copy & rename to CleanReturn.config)  
-   ├─ Epic Games Store (Template).bat  
-   ├─ Steam Game (Template).bat  
-   ├─ Steam Game Exception (Template).bat  
-   └─ Non-Steam Game (Template).bat  
+CleanReturn/
+├─ CleanReturn.ps1              # Core monitoring & cleanup script
+├─ CleanReturn.config.example   # Example config (copy & rename to .config)
+├─ README.md                    # Quick start guide
+├─ TechnicalNotes.md            # Detailed breakdown
+├─ LICENSE                      # GPLv3 license
+└─ Templates/                   # Ready-to-use per-store templates
+   ├─ Epic Games Store (Template).bat
+   ├─ Steam Game (Template).bat
+   ├─ Steam Game Exception (Template).bat
+   └─ Non-Steam Game (Template).bat
 
 ---
 
