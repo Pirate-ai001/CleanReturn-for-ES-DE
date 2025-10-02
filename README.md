@@ -1,4 +1,4 @@
-# 🎮 CleanReturn
+# 🎮 CleanReturn-for-ES-DE
 
 **CleanReturn** is a lightweight script system for managing Steam, Epic Games Store, and Non-Steam games in [ES-DE (EmulationStation Desktop Edition)](https://es-de.org/).  
 It ensures a seamless controller-only loop: **ES-DE → Game → ES-DE** — no lingering launchers or Alt+Tab required.
